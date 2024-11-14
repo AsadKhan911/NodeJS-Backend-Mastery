@@ -1,0 +1,5 @@
+PREREQUISITES:
+
+1). Basic JavaScript.
+2). ES5 & ES6 | ECMA Script 6
+3). Client Server Model(optional)
