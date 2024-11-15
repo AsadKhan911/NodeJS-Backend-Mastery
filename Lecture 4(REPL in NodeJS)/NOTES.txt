@@ -1,0 +1,54 @@
+REPL stands for Read-Eval-Print Loop. It's an interactive programming environment that comes with Node.js. Here's what each part means:
+
+1). Read: It reads the user's input (a command or code).
+2). Eval: It evaluates the input (runs the code).
+3). Print: It prints the result of the evaluation.
+4). Loop: It loops back to read the next input.
+
+In simpler terms, it's a tool that lets you write and test small pieces of JavaScript code directly in the terminal. You type in some code, hit enter, and see the result immediately. This is great for quick experiments, debugging, and learning how things work in Node.js.
+
+-> To enter in NodeJS environment simply type command node in VScode terminal and you will enter.
+
+WE CAN DO FOLLOWING THINGS IN REPL:
+
+1).Expressions: +,-,/,*,% 1+2 , 4-5 , 8/8 , 8*7 , 2%2 etc
+
+2). Use Variables: let a = 'asad' let b = 'khan' a+b result asadkhan etc , means we can test variables if we want what will be the result.
+
+3). Multi line code/loops:
+let x = 0
+undefined
+> do{
+... x++
+... console.log(`x value is ${x}`)
+... }
+... while(x<5)
+x value is 1
+x value is 2
+x value is 3
+x value is 4
+x value is 5 like this....
+
+4). Use (_) to get the last result: n the Node.js REPL, the underscore (_) is a special variable that holds the result of the last evaluated expression. Here's how it works:
+
+> 5 + 3
+8
+> _ * 2
+16
+
+5). Editor Mode: The editor mode in the Node.js REPL is useful for writing and editing multi-line code blocks. It allows you to open a text editor within the REPL session, making it easier to write, edit, and execute longer scripts without exiting the REPL. 
+
+-> Type .editor and press Enter.
+
+// Example code block
+const greet = (name) => {
+  return `Hello, ${name}!`;
+}
+
+const message = greet('Asad');
+console.log(message);
+
+To exit the editor mode and execute the code, press Ctrl+D. The REPL will then evaluate the entire block of code.
+Hello, Asad!
+
+CONCLUSION : At the end we can test any type of code which include any array function, string function etc can be test in REPL.
