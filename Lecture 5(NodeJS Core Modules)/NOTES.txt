@@ -1,0 +1,37 @@
+Module in NodeJS are nothing but libraries like we use in REACT with import keyword to make our work smart with predefined methods and codes.
+
+To add module in NodeJS we will use require('') keyword as we use import in ReactJS.
+
+There are many modules but we will discuss some core ones.
+
+Module Names:
+
+1). fs: The fs (file system) module in Node.js provides an API 
+
+-> Write Files: Write data to a file, replacing the file if it already exists.
+
+const fs = require('fs')
+fs.writeFileSync('read.txt' , "Welcome to the 5th lecture") //file name , and content in the parameter.
+
+-> fs.writeFileSync is a synchronous operation file creating and writing , while 'fs.writeFile' is Asynchoronous.
+And if the file already created by same name it will write this content inside it , otherwise it will create first and then write.
+
+-> to interact with the file system. Here are some of the key things it can do:
+
+2). fs.appendFileSync()/fs.appendFile: It is used if we want not to override the data in a file like fs.wrtieFile , instead we want to add more in it.
+
+3). fs.readFileSync(): Used to read the file.
+
+//When we read a file we will get the buffer data.
+
+let buffer_data = fs.readFileSync('read.txt')
+console.log(buffer_data)
+
+But if we want to convert buffer data to string we have to simply use .toString() method.
+
+let str_data = buffer_data.toString()
+console.log(str_data) //Simple
+
+4). fs.renameSync('old name' , 'new name'): Use to rename the file
+fs.renameSync('read.txt' , 'newName.txt')
+
