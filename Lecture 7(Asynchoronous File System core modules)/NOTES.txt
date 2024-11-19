@@ -1,0 +1,1 @@
+In asynchoronous file system(fs) modules we have to just pass an extra argument at last which is a simple call back function which contains the argument 'err' as its first argument every time.
