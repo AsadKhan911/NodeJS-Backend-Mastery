@@ -1,0 +1,9 @@
+POINT: Remember every seperate .js file in NodeJS is known as a module.
+
+In this lecture we learn 3 things:
+
+1). How to create our own single module , export it and use it in a different file(Code in index.js and exportFile.js file)
+
+2). How to create our own multiple modules , export them and use them in a different file(Code in index2.js and exportFile2.js file)
+
+3).  How to create our own multiple modules , export them and use them in a different file with the help of destructuring(Code in destructing.js and destExportFile.js file)
