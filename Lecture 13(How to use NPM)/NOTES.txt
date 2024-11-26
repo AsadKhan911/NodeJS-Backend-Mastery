@@ -1,0 +1,7 @@
+We can import and use NPM packages in two ways:
+
+1). .js file: When we make file with .js extension we can install first npm i package
+Then we will import it by using const package = require('package') means with require keyword (Outdated but can use)
+
+2). The ES6 feature .mjs file: The .mjs has all the process same 
+But we can import the package but using 'import' keyword like in react , import package from package (Preferable)
