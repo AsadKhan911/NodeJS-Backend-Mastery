@@ -1,0 +1,32 @@
+DIFFERENCE BW GLOBAL AND LOCAL MODULES:
+
+Local NPM Modules
+Local NPM Modules are installed in the node_modules directory within your project folder. They are accessible only within that specific project. Local installation is the default when you run npm install <package>.
+
+Global NPM Modules
+Global NPM Modules are installed in a central location on your system. They are accessible from any project or command line interface (CLI). Global installation is used for packages that provide command-line tools.
+It stalls in operating system.
+
+Run the command to install a package globally:
+
+npm install -g <pacakage>
+
+The -g flag specifies global installation. The package is now installed in a directory specified by your npm configuration (C:\Users\<username>\AppData\Roaming\npm\node_modules on Windows).
+
+When to Use Each:
+
+Local Installation:
+
+When the package is a dependency for your project.
+Ensures that the project has a consistent environment regardless of the system it's run on.
+Example: libraries like express, react, lodash, etc.
+
+Global Installation:
+
+When the package provides a command-line tool that you need to use across multiple projects.
+Example: tools like eslint, nodemon, typescript, etc.
+
+WHAT IS NODEMON IN?
+
+Nodemon is a tool that helps with the development of Node.js applications by automatically restarting the application when file changes in the directory are detected. It simplifies the development process by eliminating the need to manually stop and start the server each time you make a change to your code. means you dont have to write node index.js again and again in terminal to check your changes. As you press ctrl S it will automatically show the changes on terminal.
+How to start in terminal: Simply write nodemon <filename.js> and enter.
