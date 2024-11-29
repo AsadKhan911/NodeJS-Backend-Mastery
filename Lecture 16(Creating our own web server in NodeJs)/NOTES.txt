@@ -1,0 +1,11 @@
+How to create our own Web Server in NodeJs?
+
+1). First of all require the built in module of nodeJs 'http'.
+
+2). The http includes a function named createServer() which includes request and response parameters.
+
+3). The request object can be used to get information about the http request eg: urlm request header , and data.
+
+4). The response object can be used to send a response for a current http request.
+
+CHECK THE CODE FILE TO HAVE MORE PRACTICAL AND NOTES IDEA. EXPLAINED THERE!

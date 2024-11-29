@@ -1,0 +1,25 @@
+1. Writing and Running Your Code:
+
+Code Creation: You write your Node.js server code in VS Code. For instance, your code might be in a file called index.js
+
+Running the Server: You start your server by running the file using Node.js. In your terminal, you would use a command like: node index.js
+
+2. Server Execution:
+
+Server Startup: When you run the command, Node.js executes the code in index.js. This sets up your server to listen for incoming requests on port 8000.
+
+Listening for Requests: Your server is now actively listening on port 8000 and the IP address 127.0.0.1 (localhost).
+
+3. Accessing the Server:
+
+Browser Request: When you enter localhost:8000 in Chrome, the browser sends an HTTP request to the server running on your local machine.
+
+Request Handling: The HTTP request is directed to your Node.js server, which is listening on port 8000.
+
+Response: Your server processes the request and sends back the response defined in your code ("Hey this server is made by Asad Khan").
+
+4. Networking:
+
+Localhost and Ports: localhost is a hostname that resolves to 127.0.0.1, your local machine’s IP address. Port 8000 is specified to direct the request to the correct process running on your machine.
+
+192.168.56.1
