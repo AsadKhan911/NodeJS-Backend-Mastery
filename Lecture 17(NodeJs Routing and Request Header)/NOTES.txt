@@ -1,0 +1,45 @@
+const http = require('http') 
+
+const server = http.createServer((req,res) => {
+    if(req.url == '/'){
+        res.end("Hey this is HOME page")
+    }
+    else if(req.url == '/about'){ //if use types http://localhost:8000/about
+        res.end("Hey this is ABOUT page")
+    }
+    else if(req.url == '/contact'){ if user types http://localhost:8000/contact
+        res.end("Hey this is CONTACT page")
+    }
+   else{ if user types something which is not available
+    res.writeHead(404 , {"CONTENT-TYPE" : "text/html"}) //This is a to change the status code in request header, defining request header below.
+    res.end("ERROR 404 NOT FOUND!")
+   }
+})
+
+server.listen(8000 , '127.0.0.1' , ()=>{
+    console.log("Listening to the port no 8000")
+})
+
+//Request header is when we open our inspect section and in inspect section we go to network , the network tab has all our requests data, when we click on single request there is a seperate header for each request which contains the information about each request , which contains request STATUS CODE , CONTENT TYPE , REQUESTED URL , REQUEST METHOD etc. 
+
+res.writeHead(404 , {"CONTENT-TYPE" : "text/html"}) So we use this line to change the status , if any error occours because if we donot change it will show us the 500 status code which means all fine but its an error.
+
+MULTIPLE HTTP STATUS CODE FOR DIFFERENT ERRORS AND SITUATIONS:
+
+1). 200 OK: Indicates that the request was successful and the server has returned the requested data. Commonly used for successful GET and POST requests.
+
+2). 204 No Content: Indicates that the request was successful but there is no content to return, commonly used in responses to DELETE requests or for updates where no data is returned.
+
+3). 400 Bad Request: Indicates that the server could not understand the request due to invalid syntax. Used for client-side errors such as malformed requests.
+
+4). 401 Unauthorized: Indicates that authentication is required and has either failed or has not been provided. Used when user authentication is needed to access a resource.
+
+5). 403 Forbidden: Indicates that the server understands the request but refuses to authorize it. Used when the client does not have permission to access the resource.
+
+6). 404 Not Found: Indicates that the requested resource could not be found on the server. One of the most common status codes, used when a URL does not correspond to any resource.
+
+7). 500 Internal Server Error: Indicates that the server encountered an unexpected condition that prevented it from fulfilling the request. Used for general server errors that don’t fall into more specific categories.
+
+8). 503 Service Unavailable: Indicates that the server is currently unable to handle the request due to temporary overloading or maintenance. Often used during server maintenance or when the server is too busy.
+
+These status codes cover a broad range of scenarios and are essential for handling responses and errors in web applications.
