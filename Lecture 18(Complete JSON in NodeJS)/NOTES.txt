@@ -1,0 +1,49 @@
+Key interview points:
+
+-> JSON stands for javaScript Object Notation.
+-> JSON  is ia light weight format for storing and trasnporting data.
+-> JSON is often used when data is sent from a server to a web page.
+
+How to make a simple object?
+
+const myObj = {
+name : 'Asad',
+age : 24,
+occupation : 'Student',
+}
+
+This is it , object have key value pairs in which key is without quotes and value is with quotes ''
+
+console.log(myObj.name)
+console.log(myObj.age)
+console.log(myObj.occupation) We can simple call object keys or properties like this
+
+->How to change object to JSON?
+
+const jsonData = JSON.stringify(myObj) //JSON.stringify() is used to convert object to JSON Format
+console.log(jsonData)
+
+OUTPUT: {"name":"Asad","age":24,"occupation":"Student"} //JSON format is nothing but object which contains both key and value in double quotes thats it.
+
+//How to change JSON into object?
+
+const objAgain = JSON.parse(jsonData)
+console.log(objAgain)
+
+OUTPUT: { name: 'Asad', age: 24, occupation: 'Student' } 
+
+FINAL LOOK OF DIFFERENCE BW JSON AND OBJECT:
+
+OBJECT:
+const myObj = {
+    name : 'Asad',
+    age : 24,
+    occupation : 'Student',
+};
+
+JSON:
+{
+    "name" : "Asad",
+    "age" : 24,
+    "occupation" : "Student"
+} //The last value doesnot ends with comma aswell it doesnot stores in a variable
