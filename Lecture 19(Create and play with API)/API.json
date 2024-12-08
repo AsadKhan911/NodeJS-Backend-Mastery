@@ -1,0 +1,44 @@
+[
+    {
+        "city": "New York",
+        "temperature": 21.5,
+        "conditions": "Clear",
+        "humidity": 60,
+        "wind_speed": 5.4
+    },
+    {
+        "city": "Los Angeles",
+        "temperature": 25.8,
+        "conditions": "Sunny",
+        "humidity": 50,
+        "wind_speed": 3.6
+    },
+    {
+        "city": "Chicago",
+        "temperature": 15.2,
+        "conditions": "Cloudy",
+        "humidity": 70,
+        "wind_speed": 7.1
+    },
+    {
+        "city": "Houston",
+        "temperature": 28.4,
+        "conditions": "Humid",
+        "humidity": 80,
+        "wind_speed": 4.3
+    },
+    {
+        "city": "Miami",
+        "temperature": 29.1,
+        "conditions": "Showers",
+        "humidity": 85,
+        "wind_speed": 6.7
+    },
+    {
+        "city": "Seattle",
+        "temperature": 18.3,
+        "conditions": "Rainy",
+        "humidity": 75,
+        "wind_speed": 8.5
+    }
+]

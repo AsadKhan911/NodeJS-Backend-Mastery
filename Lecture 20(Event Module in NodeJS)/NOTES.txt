@@ -1,0 +1,30 @@
+Just like events in JS there is a concept of events in nodeJS aswell but slighty different.
+
+-> In nodeJS we can make our own event and also fire it at any time.
+
+-> The event is the core module of NodeJS but the defining is slighty different from the other module just like we do with require keyword.
+
+const EventEmitter = require('events') //the EventEmitter must be write in this way
+
+const event = new EventEmitter(); //like this.
+
+METHODS:
+
+1). event.emit(): This method is just used to create an event bas define krdia k is nam ka event exist krta h.
+
+2). event.on(): This method is used to fire an event , means if we emit(create) an event an if we want to fire it and define it we will use event.on()
+
+event.on("ShowMyName" , () => { //fire the event.
+    console.log("My name is Asad Khan")
+})
+event.emit('ShowMyName') //created the event
+
+-> Remember the emit function must be below the event.on , event ko phele define krna h phr emit krna h.
+
+We can also emit and on event with parameters and arugments like this:
+
+event.on('CheckStatus' , (SC , msg) => {
+    console.log(`The status code is ${SC} and the status message is ${msg}`)
+})
+
+event.emit('CheckStatus' , 200 , 'ok')
