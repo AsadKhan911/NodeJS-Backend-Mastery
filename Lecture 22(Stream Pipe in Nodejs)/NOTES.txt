@@ -1,0 +1,4 @@
+In simple terms, stream.pipe() is a method in Node.js used to connect two streams together, allowing data to flow from one stream to another automatically. 
+
+Like in previous lecture we use different events like data , end etc with call backs hamein uski need ni hogi just in 2 lines of codes , we can stream data from file to our destination.
+

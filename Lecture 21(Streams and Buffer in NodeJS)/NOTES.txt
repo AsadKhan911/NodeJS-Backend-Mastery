@@ -1,0 +1,28 @@
+What is stream?
+
+Streams are objects that let you read data from a source or write data to a destination in continous fashion. In Nodejs.
+
+Streaming means listening to music or watching video in 'real time' instead of downloading a file to your computer and watching it later.
+
+Example: Youtube , Netflix , SoundCloud etc.
+
+There are four types of streams:
+
+//More important
+
+1). Readable: Stream which is used for read operation.
+2). Writable: Stream which is used for write operation.
+
+//Less important, but remember
+
+3). Duplex: Stream which can be used for both read and write operation.
+4). Transform: A type of duplex stream where the output is computed based on input.
+
+Each type of Stream is 'EventEmitter' instance and throws several events at different instance of times, eg: some of the commonly used events are-
+
+1). data: This event is fired when there is data available to read.
+2). end: This event is fired when there is no more data to read.
+3). error: This event is fired when there is any error receiving or writing data.
+4). finish: This event is fired when all the data has been flushed to underlying system.
+
+USED ALL THESE CONCEPTS IN CODE FILE YOU MUST CHECK.

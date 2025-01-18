@@ -1,0 +1,39 @@
+ExpressJs is a NodeJs framwork. It is the most popular framewok as of now.
+
+ExpressJs is a web application framework that provides you with a simple API to build websites, web apps, and backends.
+
+Why do we need ExpressJs?
+
+Express.js is like a helper for building web applications and APIs in Node.js. It makes it easier to handle web requests, manage routes, and interact with databases. Imagine you're building a website or app, and you need to handle things like user requests, respond with the right information, and manage different parts of your site. Express.js simplifies all that by providing tools and shortcuts, so you don’t have to write as much code to get things done.
+
+Example: 
+
+NodeJs code 100 lines.
+ExpressJs code 30 lines.
+
+Like this we can create our express app easily:
+
+const express = require('express')
+const app = express()
+
+app.get( '/' , ( req , res ) => { //no need to use http routes with if else.
+   res.send("This is our first express app home page")
+})
+
+app.get( '/about' , ( req , res ) => {
+    res.send("This is our about page") //res.send() instead of res.end() or res.write()
+})
+
+app.listen(8000 , () => { 
+    console.log("Server started at port 8000")
+})
+
+you can only use port no need to add hostname(ip address) in app.listen() , the express will add '0.0.0.0' by default means that the server will listen on all available network interfaces, making it accessible from other devices on the network.
+
+res.status(200)
+res.set('Content-Type', 'text/html'); //request header in express
+
+REMEMBER: 
+Use res.send() when there is a single line to send because server will automatically recognize that this is the last line which has to be write.
+Use res.write() when there are multiple lines.
+But when using res.write() at the end of the function write res.end() at the end of all the lines varna server chalta rhega k shaid abi or data baki h.

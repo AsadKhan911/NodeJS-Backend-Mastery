@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Quotes</title>
+</head>
+
+
+<body>
+
+    <div class="container">
+        <div class="inner">
+            <div class="box">
+                <a class="number" style="cursor: pointer;">
+                    <h3 style="color: gray;">Post to twitter</h3>
+                    <img src="assets/logo.png" alt="TweetMe" title="tweetme" id="tweet">
+                </a>
+
+                <div class="text">
+                    <i class="start-quote"></i>
+                    <p id="quotes" class="quotes"></p>
+                    <p id="author" class="author"></p>
+                </div>
+
+                <label for="" class="button">
+                    <p id="newQuotes">new Quotes</p>
+                </label>
+                <h3 style="margin-top: 20px; color: grey;">Credit Asad Khan :)</h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let realData = "" //declaring here to keep it global
+        let quotes = document.getElementById('quotes')
+        let author = document.getElementById('author')
+        let Qbutton = document.getElementById('newQuotes')
+        let twitter = document.getElementById('tweet')
+        let quoteData = ""
+
+        const getRandomQuotes = () => {
+            let randomNum = Math.floor(Math.random() * 16)
+            quoteData = realData[randomNum]
+            let text = quoteData.text
+            let name = quoteData.author
+            quotes.innerHTML = text
+            author.innerHTML = name
+            if (name == null) {
+                author.innerHTML = "Unknown"
+            }
+            else {
+                author.innerHTML = name
+            }
+        }
+
+
+        const getQuote = async () => {
+
+            try {
+                const API = 'https://type.fit/api/quotes'
+                let apiData = await fetch(API)
+                realData = await apiData.json()
+                console.log(realData)
+
+                getRandomQuotes()
+            }
+            catch {
+                console.log(Error)
+            }
+        }
+
+        //This is the two lines function to post on twitter , instagram etc
+        const tweetPost = () => {
+            let url = `http://twitter.com/intent/tweet?text=${quoteData.text}`
+            window.open(url)
+        }
+        Qbutton.addEventListener('click', getRandomQuotes)
+        twitter.addEventListener('click', tweetPost)
+        getQuote()
+    </script>
+</body>
+
+</html>
