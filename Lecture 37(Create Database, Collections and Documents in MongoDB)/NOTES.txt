@@ -1,0 +1,15 @@
+COMMANDS FOR MONGO DB SHELL:
+
+1). use <dataBase Name>:This command will make the database of the name provided , and if it is already provided with the same name then that database is ready to use.
+
+2). db.createCollection("appdata"): This command will make a collection(table) in your database named appdata
+
+3). db.appdata.insertOne({name:"Reactjs", type:"front-end", number:5, active:true}): This is use to add a document(row) into the collection(table).
+
+4). db.appdata.insertMany([{} , {} , {}]): This command will make us insert many documents in a collection at one , remember it must be an array of objects. Thats why we make an array and then different objects. Each object in it will be same as in insertOne({})
+
+4). show collections: This will show the collections in our database.
+
+5). db: This will show the current working database.
+
+6). db.appdata.find(): This will show us the documents inside appdata collection.

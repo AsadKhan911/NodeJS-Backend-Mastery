@@ -1,0 +1,3 @@
+1).Simply download the community server of mongo DB. C:\Program Files\MongoDB\Server\7.0\data
+
+2). For command line interface of mongo db download mongo db shell. C:\Users\Nexgen\AppData\Local\Programs\mongosh

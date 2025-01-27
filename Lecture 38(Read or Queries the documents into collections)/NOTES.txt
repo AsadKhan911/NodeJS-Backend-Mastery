@@ -1,0 +1,32 @@
+CRUD OPERATION:
+
+1). CREATE
+2). READ
+3). UPDATE
+4). DELETE
+
+In previous lecture we cover the Create of CRUD in which we learn how to create collection and create documents inside the collections.
+
+In this lecture we will cover the Read of CRUD in which we learn how to read the documents inside our collections.
+
+1). db.<collectionName>.find(): Find all the results of the given collection.
+
+2). db.appdata.find().pretty() :Show the result in pretty format.
+
+3). db.appdata.find({name:"Reactjs"}): Get only mongoDB data as output. The key value pair we provided in bracket is know as query. (REMEMBER it is case sensitive). It
+
+ will show only those documents which are having this key value pair name:'Reactjs'
+
+4). db.appdata.find({name:"Reactjs"}, {name:1}): This will show only field with attribute name:'Reactjs' with only field name. If we use name:0 it will show all 
+
+fields except name field. And this extra bracket name is projection.
+
+5). db.appdata.find({name:"Reactjs"}, {_id:0,name:1}): As we know when we use name:1 it only shows name but also a unique id which must shows. But if we also want to 
+
+hide id and only displays name field then we will use this command. 0 means hide , 1 means show.
+
+6). db.appdata.find({name:"Reactjs"}).limit(1): This will only shows the very first document which is being matched among all. Set the limit value accordingly.
+
+7).  db.appdata.find({name:"Reactjs"}).limit(1).skip(1): This will skip the first one and show the second one with name:'reactjs' you can skip(2) if you want to show 
+
+3rd document and vice versa.

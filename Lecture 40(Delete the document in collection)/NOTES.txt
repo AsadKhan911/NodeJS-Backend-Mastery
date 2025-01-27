@@ -1,0 +1,13 @@
+Same like update operation we can perform delete by this command:
+
+-> For deleting the very first match of the filter:
+
+db.appdata.deleteOne({type:"front-end-developer"})
+
+-> For deleting all the matches of the filter:
+
+db.appdata.deleteMany({type:"front-end-developer"})
+
+IMP: To delete all the documents into a collection:
+
+db.appdata.deleteOne({}) //Just type nothing and press enter all documents inside collection will be deleted.

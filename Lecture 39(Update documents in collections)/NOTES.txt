@@ -1,0 +1,12 @@
+To update the first document which is being matched by the filter we use:
+
+db.<collectioName>.updateOne({filter} , {$set{toBeSet}})
+
+We set type:front-end to full-stack:  
+
+db.appdata.updateOne( { type: "front-end" }, { $set: { type: "full-stack" } } )
+
+To update all the documents which are being matched by the filter:
+
+db.appdata.updateMany( { type: "front-end" }, { $set: { type: "full-stack" } } )
+
