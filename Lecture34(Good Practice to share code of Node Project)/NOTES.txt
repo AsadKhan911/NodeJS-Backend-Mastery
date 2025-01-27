@@ -1,0 +1,31 @@
+1). If you make a project for your client or friend you have to send like this.
+
+-> First of all go in the main project directory(folder) and except node_modules folder copy all other folders.
+-> Make a seperate directory with good name and paste all the directories in that folder.
+-> Compressed that folder to zip folder and send to the friend.
+
+1.1). How your client/friend recieves it?
+
+-> He will unzip that folder and open it in vs code.
+-> Because there are no node module project won't run , for this he has to just type in cmd 'npm install' and all the required node modules will be downloaded.
+
+2). How to upload your project to github?
+
+-> You have to follow the traditional method to upload on github just make a file named .gitignore in the main folder of your project.
+-> Add the file name that are un necessary to upload such as node_modules this file will not add files that are included in it.
+-> Now just initialize the code , commit and push on your repo.
+
+3). If you want to use or clone someone github project in your local machine.
+
+1.1). Download ZIP File.
+
+-> Just go on repo main page and click on code option there is a option download ZIP. 
+-> Unzip that folder and open in vs code.
+-> Type npm install all node modules will be installed.
+
+1.2). Clone the repository.
+
+-> Just go on repo main page and click on code option there is a option under clone HTTPS , copy that path.
+-> Go in the folder where you want to add that project , right click and open git bash.
+-> Type 'git clone https://github.com/csjcode/nodejs-weatherapp.git' this is the https link we copy
+-> Hit enter and whole project will be come in your folder.

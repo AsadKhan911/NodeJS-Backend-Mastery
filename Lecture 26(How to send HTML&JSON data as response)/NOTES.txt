@@ -1,0 +1,54 @@
+HTML:
+
+app.get( '/' , ( req , res ) => {
+   res.write("<h1>This is our first express HTML heading</h1>")
+   res.write("<h2>This is our first express HTML heading</h2>")
+   res.end()
+})
+
+Like this we can send html data on web page through res.write()
+
+JSON:
+
+1st Method(preferable):
+When we write like this the server will autmatically convert the object into json.
+
+app.get( '/about' , ( req , res ) => {
+    res.send({
+        name : "Asad",
+        lastName : "Khan"
+    })
+    res.status(200)
+    
+})
+
+
+2nd Mehotd:
+
+ res.json({
+        number : "0311-*******",
+        email : "asadlinkinpark9@gmail.com",
+    })
+This method will also convert the null and undefined values to json but first method will not.
+
+//Array of objects
+app.get( '/signup' , ( req , res ) => {
+   
+    res.json([
+        {
+        number : "0311-*******",
+        email : "asadlinkinpark9@gmail.com",
+        },
+        {
+        number : "0311-*******",
+        email : "asadlinkinpark9@gmail.com",
+        },
+        {
+        number : "0311-*******",
+        email : "asadlinkinpark9@gmail.com",
+        },
+])
+    res.status(200)
+})
+
+

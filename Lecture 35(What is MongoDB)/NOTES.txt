@@ -1,0 +1,28 @@
+What is mongoDB?
+
+MongoDB is a type of database that stores data in a flexible, JSON-like format called BSON. Instead of tables like in traditional databases, it uses collections and documents, making it easier to handle complex or changing data. It's great for applications that need to scale quickly and handle a lot of varied information.
+
+What is BSON?
+
+BSON stands for Binary JSON. It's a format used by MongoDB to store data. Think of it as a more compact, binary version of JSON (JavaScript Object Notation) that can store more data types and is faster to read and write.
+
+TRADITIONAL DATABASES VS MONGO-DB:
+
+Structure:
+
+Traditional Database: Uses tables to store data. Each table has rows and columns where rows represent individual records, and columns represent attributes of those records.
+
+MongoDB: Uses collections to store data. Each collection contains documents, which are similar to rows but are more flexible and can have different structures, aswell field represent columns.
+
+Schema:
+
+Traditional Database: Has a fixed schema. All rows in a table must have the same columns and data types.
+
+MongoDB: Has a flexible schema. Documents in a collection can have different fields and data types.
+
+
+TABLE->COLLECTION
+ROW->DOCUMENT
+COLUMN->FIELD
+
+

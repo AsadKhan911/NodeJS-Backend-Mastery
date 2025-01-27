@@ -1,0 +1,7 @@
+What are partials in ExpressJs: 
+
+In Express.js, partials are a way to reuse common pieces of HTML code across different views or templates in your application. Think of them as reusable building blocks for your web pages.
+
+For example, if you have a navigation bar, footer, or sidebar that appears on multiple pages of your website, you can create a partial for each of these elements. Instead of copying and pasting the same code into every view, you can include these partials in your main templates. This helps keep your code organized and makes it easier to update common elements across your site.
+
+*WATCH THIS LECTURE AGAIN*

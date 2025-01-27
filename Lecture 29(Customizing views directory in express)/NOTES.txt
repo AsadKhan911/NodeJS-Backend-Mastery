@@ -1,0 +1,26 @@
+In previous lecture we learned about template engines.
+
+But the issue is that we have to add the files in a directory named views and we can't change the folder name.
+
+In this lecture we will see how can we can use the folder name of our own choice and can access the hbs files easily.
+
+For this we have to just add one line: 
+
+const express = require('express')
+const app = express()
+const path = require('path')
+
+const hbsPath = path.join(__dirname , '/nameChanged') //First of all we have to extract the folder path which name is been changed from views to any other name
+//Set view engine
+app.set('view engine' , 'hbs')
+
+app.set('views' , hbsPath) //After setting view engine we have to give first argument views, second is folde path we extract , now we can access all the files.
+
+//Set template engine route
+app.get('/' , (req,res)=> {
+    res.render('index.hbs')
+})
+
+app.listen(8000 , ()=>{
+    console.log("Port Running at 8000")
+})

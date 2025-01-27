@@ -1,0 +1,41 @@
+What is template engine in NodeJs: 
+
+In Node.js, a template engine is a tool that helps you create HTML pages dynamically. Instead of writing static HTML, you use a template engine to insert data into your HTML templates.
+
+Here’s how it works in simple terms:
+
+Templates: You create HTML files with placeholders where you want dynamic data to appear. These placeholders are replaced with actual data when the page is rendered.
+
+Data: When a request comes in, your Node.js app fetches or generates the data you need to display.
+
+Rendering: The template engine takes the HTML template and the data, combines them, and produces the final HTML that is sent to the user's browser.
+
+MOST PREFERABLE IS Handlebars(hbs).
+
+How to use hbs:
+
+1). Create a directory(folder) named 'views' in the main folder of your project.
+
+2). Now create a file in views folder with .hbs extension.
+
+3). Set view engine: type-> app.set('view engine' , 'hbs') //now the view engine is setted.
+
+4). Set the view enigne route: It is same just like we set routes for express app with app.get , the main difference is we use res.render() instead of res.send()
+
+app.get('/' , (req,res)=> {
+    res.render('index.hbs') //means now we can send a whole file to show dynamic content such as home file seperate, contact file seperate etc.
+})
+
+How to send dynamic data?
+
+HBS file: <body>
+    <h1>This is the dynamic dataaaaaaaa of {{DataName}}</h1>
+</body>
+
+index.js: app.get('/' , (req,res)=> {
+    res.render('index.hbs' , {
+        DataName : "EJ"
+    })
+})
+
+This is just like props in react we do. Name must be same on both sides eg DataName.

@@ -1,0 +1,42 @@
+What is error 404 page: Suppose we have multiple routes for our pages eg: /about , /contact etc but if user searches the page /abcd which is not available, the UI will show the user an error which is not visually attractive or understandable which will cause the user experience bad aswell SEO.
+
+For this instance we create a seperate view in views folder 404.hbs in which we decently described the cause of error.
+
+app.get('/about', (req, res) => {
+    res.render('about'); // No need for '.hbs'
+});
+
+app.get('/contact', (req, res) => {
+    res.render('contact'); // No need for '.hbs'
+});
+
+index.hbs:
+<body>
+    <h1 style="color: red;">CANNOT FOUND THE PAGE {{page}}</h1>
+</body>
+
+index.js:
+app.get('*' , (req,res)=>{ //Remember this will be on the last of all routes even the one described below after it /about/*
+    res.render('404' , {
+	page : req.url})
+})
+
+The last '*' route is for error:404 page , this means the routes other than available routes will be run by this '*' by the server.
+If contact,about,home are available if user search /services the server will redirect this route to '*' because it is other than the available.
+It will only access these routes such as: http://localhost:8000/shndhsbd
+
+But what if user searches: http://localhost:8000/about/abcd , means about k ander ja kr agar wo kch glt likhe to server ko ye kese pta chle ga.
+index.hbs:
+<body>
+    <h1 style="color: red;">CANNOT FOUND THE PAGE {{page}}</h1>
+</body>
+
+index.js
+app.get('/about/*' , (req,res)=>{
+    res.render('404' , {
+        page : req.url
+    })
+})
+
+For this we will do this , simply
+

@@ -1,0 +1,20 @@
+First of all:
+To find the directory name use express.join()
+
+express.join() is a function which is helpful for joining the paths.
+__dirname: This will provide you the path of root folder of a file in which you are working currently.
+
+onst staticPath = path.join(__dirname , '/public')
+
+In this lecture we use this because in our folder there is a folder named public in which html,css and js were place.
+
+Then:
+
+express.use: In Express, express.use() is a function used to add middleware to your application. Middleware functions are like “helpers” that can modify the request or response, or perform certain actions before the request reaches your route handlers.
+
+express.static(): express.static() is a middleware used to send html,css and js website to the screen through express this is the simplest definition of it.
+
+-> It contains one argument which is your folder path in which website is placed(which includes html,css&js files).
+-> You must have to oragnized html,css,and javascript files in a single folder like in this lecture for using with express.static()
+
+app.use(express.static(staticPath)) //Then we give this variable to express.static() to give it a path.
