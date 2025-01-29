@@ -1,0 +1,67 @@
+What is mongoose schema:
+
+A Mongoose schema is like a blueprint for how your data should look in a MongoDB database.
+
+Imagine you’re creating a contact list:
+Name: String
+Phone Number: Numbers
+Email: String
+You want every contact in your list to have these three pieces of information. A Mongoose schema helps you define this structure for your data.
+
+Breaking it down:
+
+Schema = Blueprint: It tells MongoDB what kind of data you’re storing (like text, numbers, dates) and what fields each entry (or document) should have.
+
+Example: If you’re storing information about a user, your schema might say: "Every user should have a name (string), age (number), and email (string)."
+Once you set up this schema, Mongoose uses it to ensure that all the data stored in your MongoDB database follows this structure. This helps keep your data organized and consistent.
+
+
+What is a Mongoose Model?
+
+Schema: Think of a schema as a set of rules that describe what your data should look like. For example, if you’re storing information about users, the schema might say each user has a name (which is a string) and an age (which is a number).
+
+Model: A model is like a machine that uses these rules (the schema) to interact with the actual data in your MongoDB database. With the model, you can:
+
+Create new users.
+Find users.
+Update user information.
+Delete users.
+
+Example:
+Imagine your database is like a warehouse full of boxes (data).
+
+The schema is like a label template you use for each box, telling you what should be inside (e.g., "this box should contain a name and an age").
+
+The model is like a worker in the warehouse who:
+Uses the label template (schema) to create new boxes (add new data).
+Finds boxes based on what’s written on the label.
+Updates the information in the boxes.
+Removes boxes when they’re no longer needed.
+
+Mongoose Model vs. Collection:
+
+Collection:
+In MongoDB, a collection is a group of documents (similar to rows in a table in relational databases). For example, you might have a collection called users that stores all user documents.
+Model:
+
+In Mongoose, a model is not the same as a collection. Instead, a model is a tool that you use to interact with a collection. When you create a model in Mongoose, it’s connected to a specific collection in your MongoDB database.
+How They Work Together:
+Collection: This is where the actual data lives in MongoDB. For example, the users collection might contain documents like:
+
+{ "name": "Asad", "age": 25 }
+{ "name": "Sarah", "age": 30 }
+
+Model: In Mongoose, you define a model to interact with this collection. The model lets you add, find, update, or delete documents in the users collection based on the rules (schema) you’ve set up.
+
+So, while a model is closely associated with a collection, it’s not the same thing. The model is the Mongoose tool that you use to work with the data in the MongoDB collection.
+
+To summarize:
+
+Collection = The actual data storage in MongoDB.
+Model = The Mongoose tool used to work with that data.
+
+HOW TO WRITE MODEL?
+
+const TestModel = new mongoose.model('TestCollection' , testSchema) 
+
+//first parameter is model name(collection name jo collection attach krna h us model k sth) , second is schema name jo uske lie banaya h. 

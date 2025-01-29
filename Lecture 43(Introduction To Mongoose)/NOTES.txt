@@ -1,0 +1,25 @@
+What is mongoose in MongoDB: Mongoose is a popular Node.js package that provides a convenient way to interact with MongoDB. It acts as a bridge between MongoDB and your Node.js application, allowing you to define data models (or schemas) for your collections, and making it easier to perform CRUD operations. It also make connection with mongoDB very easier.
+
+Key Features of Mongoose:
+
+1). Schemas: Mongoose allows you to define a structure for your documents, specifying the fields and their data types. This makes it easier to ensure your data is consistent and follows a specific format.
+
+2). Validation: It automatically validates the data before saving it to the database, ensuring that only valid data is stored.
+
+3). Middleware: Mongoose supports middleware functions that can be executed before or after certain operations, like saving or updating a document. This is useful for tasks like hashing passwords or logging activities.
+
+4). Query Building: Mongoose simplifies querying the database with a syntax that's easier to read and write, compared to raw MongoDB queries.
+
+5). Built-in Methods: It provides powerful methods for managing and manipulating data, making operations like updating, deleting, or finding documents straightforward.
+
+In simple, Think of Mongoose as a helpful assistant that manages your data for you. It ensures your data is well-structured, valid, and easy to work with, all while simplifying the process of interacting with MongoDB from your Node.js application.
+
+CONNECTION WITH MONGOOSE TO MongoDB:
+
+const mongoose = require('mongoose')
+
+mongoose.connect('mongodb://localhost:27017/expressDB').then( () => { //expressDB will be ur database, if it exists it will connect u with that otherwise make&connect.
+    console.log("connection successfull")
+}).catch( (err) => {
+    console.log("not connected due to error "+err)
+})

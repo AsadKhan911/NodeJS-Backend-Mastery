@@ -1,0 +1,30 @@
+Code in last lecture.
+
+Conditions:
+
+1). Suppose you have no collection(table) in your database and you make a model:
+
+const TestModel = new mongoose.model('TestCollection' , testSchema)
+
+->In this the first parameter will automatically change to lowercase 'testcollection' + pluralize it 'testcollections' and make a new collection in your database when the first document will be inserted using this schema and model.
+
+-> The second parameter is schema name which you want to attach with this model.
+
+2). Suppose you already have a collection in your database and you want to connect model with that collection:
+
+const TestModel = mongoose.model('TestModel', testSchema, 'TestCollection');
+
+->In this the first parameter will be your model name for reference only,(apny dekhne k lie bas), second parameter is Schema to be connected and the third parameter will be the collection(table) name which exists in mongoDB , remember the third parameter is case-sensitive , and now the model will connect to that collection.
+
+WHOLE CODE INCLUDING SCHEMA FOR IT:
+
+const mongoose = require('mongoose');
+
+// Define the schema
+const testSchema = new mongoose.Schema({ //Good practice to write schema name in camelCase.
+  name: String,
+  age: Number
+});
+
+// Create the model
+const TestModel = mongoose.model('TestModel', testSchema, 'TestCollection'); Good practice to write model name in UpperCamelCase

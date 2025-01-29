@@ -1,0 +1,37 @@
+1. Create (Insert) Documents:
+Step 1: Open MongoDB Compass and connect to your MongoDB instance.
+Step 2: Select the database and collection where you want to insert the document.
+Step 3: Click on the "Insert Document" button.
+Step 4: A modal will appear where you can input your JSON document. Example
+
+{
+  "name": "Asad",
+  "class": 12,
+  "height": 12
+}
+
+Read (Query) Documents:
+Step 1: Go to the collection from which you want to read data.
+Step 2: Use the "Filter" bar at the top to enter a query in JSON format. For example, to find documents where name is "Asad":
+
+{ "name": "Asad" }
+
+Update Documents:
+Step 1: In your collection, locate the document you want to update.
+
+Step 2: Click the "Edit" icon (a pencil) next to the document.
+
+Step 3: In the modal that appears, modify the fields you want to update.
+
+Step 4: Click "Update" to save the changes.
+
+Delete Documents:
+Step 1: Locate the document you want to delete in the collection.
+
+Step 2: Click the "Delete" icon (a trash can) next to the document.
+
+Step 3: Confirm the deletion in the modal that appears.
+
+Alternative Delete Method:
+
+Step 1: Use the "Delete Many" option to delete multiple documents that match a filter condition.

@@ -1,0 +1,3 @@
+Just install the MongoDB Compass from the official website of MongoDB:
+
+Like we were performing CRUD operation on mongo shell(MONGOSH) , Now we are able to perform these operations on GUI by clicking delete or update icon etc like drag and drop. And if we start our mongosh and also Compass and connect the connection string with the same port number the Compass will automatically fetch the data we create on mongosh.
