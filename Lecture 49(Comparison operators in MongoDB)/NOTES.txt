@@ -1,0 +1,25 @@
+Following are the comparsion operators of mongoDB:
+
+$eq: Equal to
+
+$ne: Not equal to
+
+$gt: Greater than
+
+$gte: Greater than or equal to
+
+$lt: Less than
+
+$lte: Less than or equal to
+
+$in: In an array of values
+
+{ field: { $in: [value1, value2, ...] } } //this will take array of input , if any of the one exists in it , it shows those documents.
+
+$nin: Not in an array of values
+
+{ field: { $nin: [value1, value2, ...] } } //this will take array of input , if any of the one exists in it , it shows those documents except from one that matches.
+
+HOW TO USE THEM? //Very easy
+
+const result = await TestModel.find({age:{$gt : 20}}) //age is the field(attribute) name.

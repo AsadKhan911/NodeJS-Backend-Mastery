@@ -1,0 +1,37 @@
+CODE IN PREVIOUS LECTURE 46.
+
+const TestModel = new mongoose.model('TestModel' , testSchema) //CREATE MODEL AS WE DO IN FOR INSERTING ONE DOCUMENT.
+
+const oneDocument = new TestModel({
+    name:"Ali",
+    class:12,
+    active:true,
+    email:"alil9@gmail.com"
+})
+const twoDocument = new TestModel({
+    name:"Afzal",
+    class:12,
+    active:true,
+    email:"afzal@gmail.com"
+})
+const thirdDocument = new TestModel({
+    name:"Hafeez",
+    class:12,
+    active:true,
+    email:"hafeez9@gmail.com"
+})
+const fourthDocument = new TestModel({
+    name:"Adil",
+    class:12,
+    active:true,
+    email:"alil9@gmail.com"
+}) //Create multiple documents you want to make.
+
+TestModel.insertMany([oneDocument, twoDocument, thirdDocument, fourthDocument]).then((res)=>{ //use TestModel(variable name for making a model) with insertMany
+    console.log(res)
+}).catch((err)=>{
+    console.log(err)
+})
+
+Make an arrat in .insertMany([]) and add all the documents name inside it and done the documents will be submitted in one go.
+Note: .save method is in individual document name, while insertMany is in model variable name.

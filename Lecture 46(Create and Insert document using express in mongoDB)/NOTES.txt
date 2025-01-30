@@ -1,0 +1,40 @@
+const testSchema = new mongoose.Schema({ 
+    name:{
+        type:String,
+        require:true
+    },
+    class:Number,
+    active:Boolean,
+    email:String
+})
+
+//MODEL
+ 
+const TestModel = new mongoose.model('TestModel' , testSchema) //this variable will works an object now , we will use it now instead of mongoose to insert documents.
+
+ONCE YOU MAKE SCHEMA AND MODEL , THE THIRD THING WE DO NOW IS TO INSERT THE DOCUMENT IN OUR ACTUAL DATABASE USING THIS SCHEMA AND MODEL.
+
+const firstDocument = new TestModel({ //TestModel is the model name we make upper and firstDocument is the document variable
+    name:"AsadKhan",
+    class:12,
+    active:true,
+    email:"asadlinkinpark9@gmail.com"
+})
+
+firstDocument.save().then((res)=>{ //with the help of document variable now we can save it.
+    console.log(res)
+}).catch((err)=>{
+    console.log(err)
+})
+
+OR
+
+firstDocument.save((err , res) => {
+if(err){
+console.log(err)
+}
+else{
+console.log(res)
+})
+
+Now the document will be inserted in your mongoDB collection.

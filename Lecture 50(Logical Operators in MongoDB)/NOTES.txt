@@ -1,0 +1,36 @@
+1). $and: Joins multiple conditions that must all be true.
+
+-> Finds documents where age is greater than 18 and less than 30.
+
+EXAMPLE: db.collection.find({ $and: [{ age: { $gt: 18 } }, { age: { $lt: 30 } }] });
+
+2). $or: Joins multiple conditions where at least one must be true.
+
+-> Finds documents where the status is "active" or age is less than 18.
+
+EXAMPLE: db.collection.find({ $or: [{ status: "active" }, { age: { $lt: 18 } }] });
+
+3). $nor: Joins multiple conditions where none of the conditions are true.
+
+-> Finds documents where status is not "inactive" and age is not greater than or equal to 18.
+
+EXAMPLE: db.collection.find({ $nor: [{ status: "inactive" }, { age: { $gte: 18 } }] });
+
+4). $not: Inverts the result of a query condition.
+
+-> Finds documents where age is not greater than or equal to 18.
+
+EXAMPLE: db.collection.find({ age: { $not: { $gte: 18 } } }); 
+
+5). $exists: Checks for the existence of a field.
+
+-> Finds documents where the "email" field exists.
+
+EXAMPLE: db.collection.find({ email: { $exists: true } });
+
+6). $type: Matches documents where the field is of a specified type.
+
+-> Finds documents where the "age" field is of type "number".
+
+EXAMPLE: db.collection.find({ age: { $type: "number" } });
+
