@@ -1,0 +1,36 @@
+Mongoose provides built-in validation for various data types. Here's a brief explanation of each:
+
+3).String Validation:
+
+required: Ensures the string field is not empty.
+minlength: Specifies the minimum length for the string.
+maxlength: Specifies the maximum length for the string.
+match: Ensures the string matches a given regular expression.
+enum: Validates that the string value is one of the specified options. (EK ARRAY PASS KRDO US ARRAY K ANDR K ILAVA KOI VALUE DALI KISI NY TO ERROR AYEGA).
+
+2).Number Validation:
+
+required: Ensures the number field is not empty.
+min: Sets the minimum allowable value for the number.
+max: Sets the maximum allowable value for the number.
+
+3).Date Validation:
+
+required: Ensures the date field is not empty.
+min: Sets the minimum allowable date.
+max: Sets the maximum allowable date
+
+4).Boolean Validation:
+
+required: Ensures the boolean field is not empty (i.e., true or false).
+
+5).Array Validation:
+
+required: Ensures the array is not empty.
+minlength: Specifies the minimum number of elements in the array.
+maxlength: Specifies the maximum number of elements in the array.
+
+6).ObjectID Validation:
+
+required: Ensures the ObjectID field is not empty.
+ref: Validates that the ObjectID references a valid document in another collection.

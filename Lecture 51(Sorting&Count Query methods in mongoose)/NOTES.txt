@@ -1,0 +1,47 @@
+COUNT THE DOCUMENTS: It is used to get the count number for a specified search. 
+
+//MODEL
+
+const TestModel = new mongoose.model('TestModel' , testSchema) //first parameter is model name(collection name) , second is schema jo uske lie banaya h. 
+
+const readCount = async () => {
+    try{
+    const result = await TestModel.find({class:12}).countDocuments() //Just write .coundDocuments() to see how much are available for this thing.
+    console.log(result)
+    }
+    catch(err)
+    {
+        console.log(err)
+    }
+}
+
+readCount()
+
+SORT METHOD: It is used to sort documents in descending aswell ascending order:
+
+
+const ascending = async () => {
+    try{
+    const result = await TestModel.find().sort({name:1}) //for asscending order use +1,if use want to use any other attribute for sorting replace with name attr.
+    console.log(result)
+    }
+    catch(err)
+    {
+        console.log(err)
+    }
+}
+
+ascending()
+
+const descending = async () => {
+    try{
+    const result = await TestModel.find({class:12}).sort({name:-1}) //for descending order use -1 , if use want to use any other attribute for sorting replace with 								      name attr.
+    console.log(result)
+    }
+    catch(err)
+    {
+        console.log(err)
+    }
+}
+
+descending()

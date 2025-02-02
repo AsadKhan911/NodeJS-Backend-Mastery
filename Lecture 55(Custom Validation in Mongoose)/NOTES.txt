@@ -1,0 +1,10 @@
+We can simply do custom validation in schemas like this:
+
+age: {
+    type: Number,
+    required: true, 
+    validate(value) { //Value will be that value which user pass as an age , it can be any name but value will be more good.
+      				
+     return value >= 18;	// Custom validation: age must be at least 18
+    }
+  }

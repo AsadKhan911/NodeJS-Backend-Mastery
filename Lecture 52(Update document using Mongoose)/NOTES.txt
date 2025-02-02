@@ -1,0 +1,21 @@
+The update document is necessary where we want user to update document and update them in database aswell:
+
+EXAMPLE:
+
+const TestModel = new mongoose.model('TestModel' , testSchema)
+
+const updateDocument = async (_id) => {
+    try{
+        const result = await TestModel.findByIdAndUpdate({_id} , {$set : {name : "HAFEEZ ALI"}} , {new:true}) //({_id:id or any name}) if we give parameter as id or 														name.
+        console.log("UPDATED!")
+    }
+    catch(err){
+	console.log(err)
+    }
+}
+
+updateDocument('66ca495dd00968154148df94')
+
+'66ca495dd00968154148df94' is the _id of the document you want to update.
+{name : "HAFEEZ ALI"} is the update object, which changes the name field to HAFEEZ ALI.
+{ new: true } is an option that makes the method return the updated document instead of the original.
