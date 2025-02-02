@@ -1,0 +1,19 @@
+To create a RESTFUL API first of all structure you project folders like this:
+
+1). Create a root folder.
+2). Create a src folder.
+3). Inside src create one file name app.js or index.js
+4). Inside src create one folder named db for your database and inside that 'db folder' create a file named conn.js (to create a mongo connection).
+5). Inside src create one folder named models in which you have all your models for your database.
+
+app.use(express.json())
+It parses incoming JSON payloads and makes the resulting object available on req.body. Without this middleware, JSON request bodies would be unreadable by your Express application.
+
+Must use this when you are sending a post JSON data.
+
+app.post('/students' , (req,res) =>{
+
+    console.log(req.body)
+    const user = new StudentModel(req.body) //we can get the data using req.body instead we write inputs manually and save as we do. Now we can do dynamically by 					      req.body, means user jo b data dal k enter krega ham usko req.body k through access krlengy. Till now it is stored in 					      local machine but no in database.
+    user.save() //now it will store in database aswell.
+})

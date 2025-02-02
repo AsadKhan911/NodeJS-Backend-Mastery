@@ -1,0 +1,38 @@
+*NOTE: CODE IN LECTURE 58*
+
+//If we want to read or retrieve all the data
+
+app.get('/students' , async (req,res)=>{ //set the request to GET
+    try{
+        const studentsData = await StudentModel.find() //Just use the .find() method which we use to find collections in a document.
+        res.status(201)
+        res.send(studentsData)
+    }
+    catch(err){
+        res.status(400)
+        res.send(err)
+    }
+})
+
+/Reading data from API of an individual student through get request by id.
+
+app.get('/students/:id' , async (req,res)=>{ //The /:id is known as a parameter we can give any key as a parameter such as name , age etc.
+    try{
+    const _id = req.params.id //The req.params will get all the parameters in the request in this case we have only 'id' and req.params.id will get the id parameters 				value
+
+    const studentData = await StudentModel.findById(_id) //We use mongoose func findById(_id) //provide _id as a destructring as key name is also same as _id in DB.
+
+    if(!studentData){ //If student doesnot found
+        res.status(400)
+        res.send("ERRORs")
+    }
+    else{ 
+        res.status(200)
+        res.send(studentData)
+    }
+    }
+    catch(err){ //Any technical error etc so that we use catch as a part of async await method.
+        res.status(400)
+        res.send(err)
+    }
+})

@@ -1,0 +1,48 @@
+-> What is a RESTful API?
+
+A RESTful API (Representational State Transfer API) is a way for different software applications to communicate with each other over the internet. Think of it as a set of rules or guidelines that allows a client (like a web browser or mobile app) to interact with a server to request data or send information.
+
+Imagine a RESTful API as a waiter in a restaurant. The waiter takes your order (request) and brings you food (response) from the kitchen (server). Similarly, when you use a RESTful API, you send a request to a server, and the server responds with the data you need.
+
+-> Key Features of RESTful APIs:
+
+Stateless: Each request from a client to the server must contain all the information the server needs to fulfill that request. The server does not remember any state about the client between requests.
+
+Resource-Based: Everything is treated as a "resource." Resources can be anything that you want to expose to the client, like users, products, orders, etc.
+
+Use of HTTP Methods: RESTful APIs use standard HTTP methods (like GET, POST, PUT, DELETE) to perform operations on resources.
+
+-> CRUD Operations in RESTful APIs:
+
+CRUD stands for Create, Read, Update, Delete, which are the four basic operations you can perform on data in a database. In the context of RESTful APIs, these operations correspond to HTTP methods:
+
+-> Create (POST): This is used to create a new resource on the server.
+
+Example: Creating a new user in a database.
+HTTP Method: POST
+Endpoint: /users
+Request Body: { "name": "John", "email": "john@example.com" }
+Response: The server might respond with the newly created user's details.
+
+-> Read (GET): This is used to retrieve a resource or a list of resources from the server.
+
+Example: Retrieving all users or a specific user from the database.
+HTTP Method: GET
+Endpoint for all users: /users
+Endpoint for a specific user: /users/{id} (e.g., /users/1)
+Response: The server sends back the requested data, such as a list of users or a single user's details.
+
+-> Update (PUT or PATCH): This is used to update an existing resource on the server.
+
+Example: Updating a user's email in the database.
+HTTP Method: PUT (for full updates) or PATCH (for partial updates)
+Endpoint: /users/{id} (e.g., /users/1)
+Request Body: { "email": "newemail@example.com" }
+Response: The server might respond with the updated user's details.
+
+-> Delete (DELETE): This is used to remove a resource from the server.
+
+Example: Deleting a user from the database.
+HTTP Method: DELETE
+Endpoint: /users/{id} (e.g., /users/1)
+Response: The server usually confirms that the resource has been deleted.

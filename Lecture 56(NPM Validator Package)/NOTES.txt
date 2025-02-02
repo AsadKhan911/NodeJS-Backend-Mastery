@@ -1,0 +1,59 @@
+validator npm package with brief explanations:
+
+isEmail(value):
+Checks if value is a valid email address.
+
+isURL(value, [options]):
+Checks if value is a valid URL with optional additional checks.
+
+isInt(value, [options]):
+Checks if value is an integer, with optional range constraints.
+
+isAlpha(value, [locale]):
+Checks if value contains only letters (alphabetical characters).
+
+isNumeric(value, [options]):
+Checks if value contains only numeric characters.
+
+isAlphanumeric(value, [locale]):
+Checks if value contains only letters and numbers.
+
+isLength(value, { min, max }):
+Checks if value is between the specified min and max length.
+
+isMobilePhone(value, [locale]):
+Checks if value is a valid mobile phone number for the specified locale.
+
+isUUID(value, [version]):
+Checks if value is a valid UUID (universally unique identifier) of the specified version.
+
+matches(value, pattern, [modifiers]):
+Checks if value matches the given regular expression pattern with optional modifiers.
+
+isDate(value, [options]):
+Checks if value is a valid date with optional date formats.
+
+isJSON(value):
+Checks if value is a valid JSON string.
+
+isUppercase(value):
+Checks if value contains only uppercase letters.
+
+isLowercase(value):
+Checks if value contains only lowercase letters.
+
+isEmpty(value):
+Checks if value is empty (i.e., "" or a blank space).
+
+EXAMPLE:
+email:{
+        type:String,
+        validate(value){
+            if(!validator.isEmail(value)){ //This will check if the entered email is not valid then throw error.
+                throw new Error("Email is inValid")
+            }
+        },
+        required:true,
+        lowercase:true,
+        unique:true
+    }

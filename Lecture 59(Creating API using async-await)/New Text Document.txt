@@ -1,0 +1,32 @@
+THERE IS JUST A LITTLE DIFFERENCE BW PROMISES METHOD AND ASYNC AWAIT.
+
+PROMISES METHOD:
+
+app.post('/students' , (req,res) =>{
+
+    console.log(req.body)
+    const user = new StudentModel(req.body) //
+
+    user.save().then(()=>{ //Here we use .then() and .catch() because user.save() returns a promise
+        res.status(201)
+        res.send(user) 
+    }).catch((err)=>{
+        res.status(400)
+        res.send(err)
+    })
+})
+
+ASYNC AWAIT METHOD:
+
+app.post ('/students' , async (req,res)=>{ //We make a call back function async
+        try{	//Instead of .then() we use try here
+            const user = new StudentModel(req.body)
+            const createUser = await user.save() //Instead of .then() we await the response and store in a variable
+            res.status(201)
+            res.send(createUser)
+        }
+        catch(err){ //And .catch() is the same as catch(err){}
+            res.status(400)
+            res.send(err)
+        }
+})
