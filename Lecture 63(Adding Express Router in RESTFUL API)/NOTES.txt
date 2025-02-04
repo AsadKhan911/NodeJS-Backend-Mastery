@@ -1,0 +1,60 @@
+With the help of express router we can put all our routes in one file and in the main file we import them and use them so that our code remains clean.
+
+THREE STEPS TO USE ROUTER.
+
+1). Require the router(or create instance of the router): const router = new express.Router()
+
+2). Use the instance to make routes instead of app.requestName we use router.requestName: router.post ('/students' , async (req,res)=>{}
+
+3). We will use router in our app with the help of app.use() to tell our file that react router is being used.
+
+HOW WE DO IN OUR CODE FILE:
+
+1). In src folder we make a seperate folder named routers and in that folder we make a file students.js in which we put all the routes which we make in previous lecs.
+
+EXAMPLE WITH ONLY ONE ROUTE REST ARE IN CODE FILE:
+
+src/routers/students.js:
+
+const express = require('express') //we import express because router is inside express
+const router = new express.Router() //we make a new instance of router
+const StudentModel = require('../models/students') //As we use model to create a user with post req we also require model file.
+
+//Updating a document using PATCH Request
+
+router.patch('/students/:id' , async (req,res)=>{
+try{
+const _id = req.params.id 
+const updateStudent = await StudentModel.findByIdAndUpdate( _id , req.body , {new:true})
+if(!updateStudent){
+    res.status(400).send()
+}
+res.status(200).send(updateStudent)
+}
+catch(err){
+    res.status(404).send(err)
+}
+})
+
+
+module.exports = router; //We only export the router instance.
+
+In main file index.js we write code like this:
+
+src/index.js:
+
+const express = require('express')
+const app = express()
+require('./db/conn.js') //Requring db connection file , no need to store in a variable.
+const StudentModel = require('./models/students.js')
+const studentRouter = require('./routers/students.js') //importing students.js from routers.
+const port = process.env.PORT || 8000;
+
+app.use(express.json()) 
+app.use(studentRouter) //Just we use router which we imported from students.js and this will activate all our routes using seperate files.
+
+app.listen(port , () =>{
+    console.log("CONNECTION SUCCESSFULL AT PORT 8000")
+})
+
+TO GET A CLEAR IDEA YOU CAN SEE THE CODE FILE OF THIS FOLDER.

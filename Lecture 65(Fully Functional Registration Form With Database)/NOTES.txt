@@ -1,0 +1,35 @@
+In this lecture we learned how to connect our html page with express and store the data in mongodb:
+
+As we do in postman all things are same just the differences are below:
+
+1). In form you must mention action="/signup" method="POST" etc. when the submit button hit the form will take action='/signup' and visit the route /signup in express.
+2). The submit button must have the type=submit.
+3). Every input field must contains name= attribute , the value in name attribute will use in express to get the value of that input field.
+4). app.use(express.json())
+app.use(express.urlencoded({extended:false})) Write these two things in express to get the data from html page in json format.
+
+5). When storing data in the database , store like this:
+
+const submitFormData = new regModel({
+                firstname : req.body.firstname,
+                lastname : req.body.lastname,
+                gender : req.body.inlineRadioOptions,
+                email : req.body.email,
+                phone : req.body.phone,
+                age :   req.body.age,
+                password : password, //or req.body.password if html input name and schema key name is same use can just write like this
+                confirmpassword : req.body.cpassword
+            })
+            const saveData = await submitFormData.save()
+
+the key is the schema field key, and the req.body.firstname is the input name field.
+
+-> If both the schema key and input name attribute are same we can like this:
+
+EG: schema -> firstname : type:String
+    <input type=text name=firstname/>
+
+firstname:firstname
+OR
+we can just write firstname while inserting data in database.
+It will convert from: firstname : req.body.firstname TO firstname. OR firstname:firstname

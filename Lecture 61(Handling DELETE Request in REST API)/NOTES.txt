@@ -1,0 +1,20 @@
+"NOTE: CODE IN LECTURE 58*
+
+//Deleting a document using DELETE Request
+
+app.delete('/students/:id' , async (req,res) =>{
+    try{
+    const _id = req.params.id 
+    const deleteStudent = await StudentModel.findByIdAndDelete(_id) //It's same as findById , just we do findByIdAndDelete()
+    if(!deleteStudent){
+        res.status(400)
+        res.send()
+    }
+    res.status(200)
+    res.send(deleteStudent)
+    }
+    catch(err){
+        res.status(401)
+        res.send(err)
+    }
+})

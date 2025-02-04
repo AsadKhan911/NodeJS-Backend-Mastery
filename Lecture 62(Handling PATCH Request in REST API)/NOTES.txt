@@ -1,0 +1,30 @@
+//Updating a document using PATCH Request
+
+app.patch('/students/:id' , async (req,res)=>{ 
+    try{
+    const _id = req.params.id 
+    const updateStudent = await StudentModel.findByIdAndUpdate( _id , req.body , {new:true}) //first param id , 2nd req.body(means things we want to update
+    if(!updateStudent){
+        res.status(400).send()
+    }
+    res.status(200).send(updateStudent)
+    }
+    catch(err){
+        res.status(404).send(err)
+    }
+})
+
+EXPLAINING CORE LINE:
+
+ const updateStudent = await StudentModel.findByIdAndUpdate( _id , req.body , {new:true}) 
+
+In this we have three paramters:
+
+1). _id , by which we uniquely identify a data , we can find by name , email etc aswell for that we use findOne() method.
+
+2). req.body This is the request body in which we put the code for update such as "name":"ASAD" to "name" : "ALI" etc , just like we do in mongoose manually like this
+    StudentModel.findByIdAndUpdate( _id , "name" : "Asad" , {new:true}) , "name" : "Asad" , this part is the req.body code which retrieve.
+
+3). new : true , It is used to send a document as a response which is updated one , otherwise res.send() sends data which is before updation without new:true.
+
+Remaining code is same.
