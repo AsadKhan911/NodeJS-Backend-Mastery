@@ -1,0 +1,44 @@
+To implement it in code you have to download npm package for it named 'jsonwebtoken'
+
+const jwt = require('jsonwebtoken')
+
+//jwt.sign method is used to create a JSON Web Token (JWT).
+
+const token await jwt.sign('payload' , 'secret_key' , '[options]') //payload and secret key are most important.
+
+UNDERSTANDING THE ARGUMENTS STRUCTURE:
+
+1). PAYLOAD: This is the data you want to include in the JWT. It’s usually an object containing information about the user or other claims. This data will be encoded in the JWT and can be used to carry information like user ID, roles, or other claims. In our case we will use the _id of each document of mongo db as it is unqiue.
+
+2). This is the key used to sign the JWT. It can be a string or a buffer. The key ensures the JWT’s signature is valid and helps to verify the JWT later. Means when the browser sends the jwt with each request, the server contains this secret key , the server signs and verifies the jwt token with this secret key , because the server only contains this part of the JWT token.
+
+3). OPTIONS: This is an optional object where you can specify additional settings for the JWT, such as the expiration time, algorithm, audience, issuer, and more. Like in banking application they logout after a speicific period of time if user donot interacts with the app.
+
+UNDERSTANDING THE CODE:
+
+const generateToken = async () =>{
+    const token = await jwt.sign({id:"1234"} , "56788")
+    console.log(token)
+    const JWTverification = await jwt.verify(token , "56788")
+    console.log(JWTverification)
+}
+
+generateToken()
+
+-> First of all we create a token by putting payload as id:"1234" and secret key = "5678"
+The jsonwebtoken generates this token 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyMzQiLCJpYXQiOjE3MjU0MDgzOTl9.14s6TjR6wxzxvtiFGN5odhcVvk-3YXpP5IJEOlOUgV0'
+
+-> Then we verify using jwt.verify() method in which we give then whole token , (token sirf browser k pas hota h) and secret key , Server k pas secret key hoti hei. Then server browser k behje hue us token ko secret key k through verifiy krta h.
+
+TOKEN PART BREAKDOWN:
+
+1). The first part before first . is: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+
+This part is base64url encoded JSON that describes the token's metadata. Meta data contains user's Profile Information, Account Activity, Preferences and Settings, Behavioral Data, Security and Access etc.
+
+2). The second part before . is: eyJpZCI6IjEyMzQiLCJpYXQiOjE3MjU0MDgzOTl9
+
+Contains the claims or data of the token.
+
+3). The third part beofore . is Signature: 14s6TjR6wxzxvtiFGN5odhcVvk-3YXpP5IJEOlOUgV0
+Ensures the integrity and authenticity of the token. It is generated using the header and payload, along with the secret key. The secret key is verified by this signature part of the JWT Token by the server.

@@ -1,0 +1,28 @@
+NOTE: Code in lecture 65.
+
+
+regSchema.pre('save' , async function(){
+    if(this.isModified){
+    console.log(`current password is ${this.password}`)
+    this.password = await bcrypt.hash(this.password , 10)
+    console.log(`password is ${this.password}`)
+    this.confirmpassword = undefined
+    }
+    next()
+})
+
+How it is working?
+
+-> regSchema.pre('save', async function() { ... }) defines a "pre-save" middleware for a Mongoose schema. This means the function will be executed before a document is saved to the database. 'pre' means phele , save hone se phele ye karo.
+
+NOTE: In Mongoose schema middleware, you can’t directly access schema keys (like password). Instead we use this keyword to refer the keys.
+
+-> In Mongoose, this.isModified("password") is a method used within middleware functions to determine if a specific field (in this case, password) of a Mongoose document has been modified. This approach ensures that only modified fields are processed, improving efficiency and preventing unnecessary operations.
+
+-> if (this.isModified) is a condition that checks if any fields in the document have been changed. The this keyword refers to the current document instance (means jo b user password enter kre ga this keyword usko refer krega)
+
+-> this.password = await bcrypt.hash(this.password, 10) hashes the password using the bcrypt library. Hashing is a way to securely store passwords. 10 is the number of salt rounds, which determines the complexity of the hashing process. The await keyword ensures that the password is hashed before continuing.
+
+-> this.confirmpassword = undefined sets the confirmpassword field to undefined , This is done to ensure that the confirmpassword field which is only used for validation purposes of the password is not stored in the database.
+
+-> The next() function is used to signal Mongoose that the middleware has completed its task and that it should proceed to the next middleware function or continue with the save operation. (OPTIONAL)

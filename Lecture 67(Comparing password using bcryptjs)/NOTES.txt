@@ -1,0 +1,21 @@
+NOTE: Code in lecture 65.
+
+Suppose we hash the password and add it into the database , but when user login and enter password=ali , but hash of ali is stored in the database , and when we compare it traditionally like if(userPassword===DBpassword) It will ofcourse generate an error , so we will see how we can compare passwords in this situation.
+
+Instead of writing if(userPassword===DBpassword) we will simply change the code like this:
+
+const email = req.body.email;
+const password = req.body.password;
+
+const useremail = await regModel.findOne({ email: email })
+
+const matchPassword = bcrypt.compare(password , useremail.password) //the first argument is which user enter , and second is password store in database.
+        if (matchPassword) {
+            res.status(200)
+            res.render('welcome')
+        }
+        else {
+            res.send("INVALID PASSWORD!")
+        }
+
+Bcrypt will compare at its own simple.........................

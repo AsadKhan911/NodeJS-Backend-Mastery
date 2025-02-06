@@ -1,0 +1,88 @@
+NOTE: Code in lecture 65.
+KINDLY READ THE WHOLE NOTES TO UNDERSTAND PROPERLY.
+
+Code to generate JWT in our app:
+
+app.js:
+
+app.post('/signup', async (req, res) => {
+    try {
+        const password = req.body.password;
+        const confirmPassword = req.body.cpassword;
+        if (password === confirmPassword) {
+            const submitFormData = new regModel({
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                gender: req.body.inlineRadioOptions,
+                email: req.body.email,
+                phone: req.body.phone,
+                age: req.body.age,
+                password: password, //or req.body.password if html input name and schema key name is same use can just write like this
+                confirmpassword: req.body.cpassword
+            })
+
+            const token = await submitFormData.generateToken() //submitFormData is an instance of regModel.
+            const saveData = await submitFormData.save()
+            res.render('index')
+        }
+        else {
+            res.send("SOME FIELD MISSING")
+        }
+    }
+    catch (err) {
+        res.status(400).send(err)
+    }
+})
+
+schemaFile.js:
+
+regSchema.methods.generateToken = async function () {
+    try {
+        const token = await jwt.sign({_id:this._id} , "b3JkcmVhdGlvbnRoaXNkYXBpYXV0aG90c3Rvbmc") //key can be any random 32 bit key
+        this.tokens = this.tokens.concat({token:token})
+        console.log(token)
+        await this.save()
+        return token
+    } catch (error) {
+        res.send("Catch error")
+        console.log("Catch error")
+    }
+}
+
+The first question arises in your mind must be: QUESTION: How the app.js file accesses the generateToken method?
+
+ANSWER: Mongoose Schema and Model:
+
+In Mongoose, you define schemas and models to interact with your MongoDB collections. The regSchema you define in schemaFile.js is a Mongoose schema. When you call regModel (which presumably is created using mongoose.model('RegModel', regSchema)), you’re creating a Mongoose model based on that schema.
+
+2).Methods on Schema:
+
+You can attach instance methods to a Mongoose schema. These methods are available on instances of the model created from the schema. In your case, you’ve defined an instance method generateToken on regSchema. This method is bound to instances of the model created from regSchema.
+
+3). Instance Method Access:
+
+When you create an instance of your model using new regModel(), that instance has access to all the methods defined on the schema. So, in app.js, submitFormData is an instance of regModel, which has access to the generateToken method because it’s defined on regSchema.
+
+The second question arises in your mind must be: QUESTION: regSchema.methods.generateToken. Why we use regSchema.methods while defining a function?
+
+ANSWER: What Does regSchema.methods.generateToken Do?
+
+Instance Methods:
+
+In Mongoose, you can define instance methods on a schema using the methods object. This allows you to add custom methods that are available on instances of the model created from the schema.
+
+Purpose:
+
+By defining generateToken as an instance method, you can use it on individual documents (instances of the model) to perform actions specific to that document. In your case, generateToken is used to generate a JWT (JSON Web Token) for the specific user document.
+
+3rd question: why we make tokens key value pair as an array of object?
+
+   tokens:[{  //the name to define token in schema will be 'tokens' , its compulsory.
+        token:{
+            type:String,
+            required:true
+        }
+    }]
+Like this.
+
+Because when we make array of an object , every object in an array will have individual object id , which is unique , so we want unique id for every token thats why we use this , agar ham sirf tokens:{} likh dete schema ma to usko alag sa object id na milta. 

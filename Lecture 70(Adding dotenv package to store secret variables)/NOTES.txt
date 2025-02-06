@@ -1,0 +1,16 @@
+NOTE: Code in lecture 65.
+
+What is dotenv?
+
+Dotenv is a npm package that helps us to store secure material(variables) in a seperate file .env and we can access those variables by requiring that file in our desired file where we want to use those variables.
+
+HOW TO USE IT?
+1. Install package 'npm i dotenv' in the directory where your package.json() file is.
+
+2. Secondly create a file name only .env(nothing before nothing after just .env) in your root directory of your project.
+
+3. Add any data into the .env file eg: SECRET_KEY = abcdefghijklmnopqrstuvwxyz
+
+4. Require env file. require('dotenv').config() , this must be at the very top of your file for a good practice. we use .config() because this method loads the variables from .env file and can be accessible in our desired file through this method.
+
+5. Add this variable by adding process.env before any variable eg: const token = await jwt.sign({_id:this._id} , process.env.SECRET_KEY) 

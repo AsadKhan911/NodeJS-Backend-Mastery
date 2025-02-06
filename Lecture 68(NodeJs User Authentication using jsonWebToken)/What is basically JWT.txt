@@ -1,0 +1,31 @@
+Understand this scenario you will get to know what JWT Token authentication is:
+
+Scenario: Logging Into a Website
+
+Imagine you’re using a website that requires you to log in to access certain features. Here’s how JWTs might work in this scenario:
+
+1. User Logs In
+Action: You enter your username and password on the login page.
+What Happens: The website sends your login credentials to the server for verification.
+
+2. Server Verifies Credentials
+Action: The server checks if your credentials are correct.
+What Happens: If they are, the server creates a JWT. This token includes some information about you (like your user ID and name) and signs it with a secret key that only the server knows.
+
+3. Token is Sent Back
+Action: The server sends the JWT back to your browser.
+What Happens: Your browser stores this token, usually in local storage or a cookie.
+
+4. Using the Token
+Action: Each time you make a request to the server (like clicking on a profile page , Adding items to cart), your browser sends the JWT along with the request.
+What Happens: The server receives the token and checks if it's valid using the secret key. If the token is valid, the server knows it’s you and grants access to the requested resource.
+
+5. Token Verification
+Action: When the server gets the token, it decodes and verifies it.
+What Happens: If the token hasn’t been tampered with and is still valid, the server processes your request. If the token is invalid or expired, the server might ask you to log in again.
+
+QUESTION IN MIND: why the server has to check every time with JWT ? If the user is logged in with correct credentials why it is not enough then?
+
+Suppose if a person logs in with correct credentials , And he is a hacker and he changes the web token , the token is stolen of the person who has 3000$ balance in his account , in this way the user can stole the $3000 and manipulate the data , that is why it is important to check JWT Token with every request to verify it is the same person not with altered JWT Token.
+
+How it works in coding in next notes file.
