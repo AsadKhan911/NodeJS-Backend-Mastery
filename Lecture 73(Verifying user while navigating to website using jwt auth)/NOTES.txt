@@ -1,0 +1,51 @@
+CODE IN LECTURE 65.
+
+For this first of all you have to create a folder in src named "middleware" , and a file in it named "auth" or whatever name but auth.js is a good practice.
+
+We are creating a seperate file for authentication , because we will create this auth.js only once and declare a function inside , and whenever we want to use authentication on any page we will simple require this file and add this function as a parameter. We will look furuter.
+
+1). src/middleware/auth.js:
+
+const jwt = require('jsonwebtoken')
+
+const auth = async (req, res, next) => {
+    try {
+        const token = req.cookies.jwt;
+        const verify = await jwt.verify(token, process.env.SECRET_KEY) //jsonwebtoken in built function to verify tokens
+        console.log(verify) //This will print the jwt payload , in our case we give _id as a payload in jwt header
+        next() //next is used to pass the control to app.js or anywhere, you can see it as a break statement. KAAM KHTM AGY PASS KRO.
+    } catch (error) {
+        res.status(400).send(error)
+    }
+}
+
+Simply, we will write this code in our auth.js , to verify we hv to provide token stored in cookie and the secret key.
+
+2). app.js:
+
+app.get('/jwtverify', auth , (req, res) => {
+    res.render('jwtverify')
+})
+
+We will simple add this auth function as a parameter, the call back(req,res) section will only run once the authentication will be verified.
+
+-> If you want to access the data of the user using jwt , you can modify you src/middleware/auth.js code like this:
+
+const jwt = require('jsonwebtoken')
+const RegModel = require('../models/registration')
+
+const auth = async (req, res, next) => {
+    try {
+        const token = req.cookies.jwt; //As cookie parser is defined as a middleware in app.js no need to define it here, because if we define a middleware in app.js it works globally for all files
+        const verify = await jwt.verify(token, process.env.SECRET_KEY)
+        console.log(verify) //This is returning the payload of the jwt header when we create(sign) it , we give _id as a payload, so it is returning that _id
+
+        const user = await RegModel.findOne({_id:verify._id}) //we are finding user by _id compare to verify._id (payload) which is user id.
+        console.log(user)
+        next()
+    } catch (error) {
+        res.status(400).send(error)
+    }
+}
+
+//In output it will return all the user data , by comparing that particular document based on the id.

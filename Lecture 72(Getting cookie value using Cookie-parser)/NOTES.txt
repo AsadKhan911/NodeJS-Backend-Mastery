@@ -1,0 +1,21 @@
+NOTE: Code in lecture 65.
+
+As we know that when a server sets a jwt and stores it in browser cookie after login , Now the server needs that cookie from the browser when the user wants to visit secret or different pages of the app to verify is that the same jwt which is being generated at the login time to authenticate the user or it is a tampered jwt.
+
+Suppose if a user logs in and then manipulate the jwt in the cookie , and he manipulate the cookie like usne ese bnde ka jwt daldia h jiske account me $1000 para hua h wo , kyun k cookie k ander information store hoti h to wo easily us money ko chori kr skta h , islia server ko kch pages pr visit krvane sa phele jwt verify krna hota hei.
+
+-> So how to get back the jwt from browser cookie which server stores after login?
+
+For this we use npm middleware package named "cookie-parser" Is ka kam browser k cookie section ma se cookie scratch kr k nikalna hota h or server ko dena hota hei.
+
+CODE:
+
+const cookieParser = require('cookie-parser')
+app.use(cookieParser())
+
+app.get('/jwtverify', (req, res) => {
+    console.log(`cookie is: ${req.cookies.jwt}`)
+    res.render('jwtverify')
+})
+
+With the help of req.cookie.cookieName we can get our desired cookie to server from browser. Ye tab he work krega jab cookie parser require hoga , or ye aik middle ware hei to express ko btane k lia app.use() krna prhega.

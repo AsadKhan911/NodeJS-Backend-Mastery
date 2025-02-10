@@ -1,0 +1,71 @@
+NOTE: Code in lecture 65.
+
+What is cookie?
+
+A cookie in a browser is like a tiny piece of information that a website saves on your computer to remember things about you. For example, if you visit an online store and add items to your shopping cart, a cookie helps the store remember what you’ve picked even if you leave the site and come back later. This way, you don’t have to re-add everything to your cart each time you visit.
+
+Types of cookies:
+
+1). Session Cookies: These are like temporary notes that websites use while you’re browsing. They keep track of what you’re doing on a site until you close your browser. For instance, if you’re logged into an account and navigate through different pages, a session cookie helps keep you logged in until you finish your browsing session. EG: Sending auth token.
+
+Persistent Cookies: Think of these as long-term reminders. They stay on your device even after you close your browser and come back later. For example, if you visit a website and it remembers your username and password for next time, that’s a persistent cookie at work. eg2: adding items in a cart etc.
+
+How to send jwt to cookie:
+
+app.post('/signup', async (req, res) => {
+    try {
+        const password = req.body.password;
+        const confirmPassword = req.body.cpassword;
+        if (password === confirmPassword) {
+            const submitFormData = new regModel({
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                gender: req.body.inlineRadioOptions,
+                email: req.body.email,
+                phone: req.body.phone,
+                age: req.body.age,
+                password: password, //or req.body.password if html input name and schema key name is same use can just write like this
+                confirmpassword: req.body.cpassword
+            })
+
+            const token = await submitFormData.generateToken() //submitFormData is an instance of regModel. Read note for proper understanding
+            res.cookie("jwt" , token) //cokie name jwt and its value is token , SENDING TOKEN AS A COOKIE IN BROWSER WHILE SIGNING UP
+            const saveData = await submitFormData.save()
+            res.render('index')
+        }
+        else {
+            res.send("SOME FIELD MISSING")
+        }
+    }
+    catch (err) {
+        res.status(400).send(err)
+    }
+})
+
+EXPLAINATION: Once the passwords are matched and server gets the user inputs data , the token is generated and in next line we use res.cookie()
+
+How to use res.cookie() function:
+
+res.cookie("cookieName" , cookieValue , {options})
+
+-> Cookie name is the name you want to store that cookie in the browser with the desired name.
+
+-> Cookie value is the thing which you want to store in the cookie.
+
+-> Options are :
+
+In the cookie options parameter, you can store:
+
+Expires: The date and time when the cookie will expire and be deleted.
+
+Max-Age: The number of seconds until the cookie expires, starting from when it is set.
+
+Domain: The domain for which the cookie is valid, allowing sharing across subdomains.
+
+Path: The URL path that must exist for the cookie to be sent to the server.
+
+Secure: Indicates that the cookie should only be sent over HTTPS connections for added security.
+
+HttpOnly: Prevents the cookie from being accessed via JavaScript, protecting it from cross-site scripting attacks.
+
+SameSite: Controls when the cookie is sent, helping to prevent cross-site request forgery attacks by limiting cookie sending in cross-site contexts.

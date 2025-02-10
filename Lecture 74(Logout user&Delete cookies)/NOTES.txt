@@ -1,0 +1,34 @@
+Code in lecture 65.
+
+In this lecture we will see how to delete cookie when user logouts , and return him to login page.
+Also we will see how to delete jwt from database aswell.
+
+1). How to logout and renders a login page to user and also delete from database all at once:
+
+First of all add a link in navbar with href='/logout'
+
+Secondly make a route in app.js with get request:
+
+In auth.js define two values below:
+
+req.token = token //This is the token value fetch from cookie
+req.user = user //this is the user full document in database.
+
+In app.js write this code now:
+
+app.get('/logout', auth , async (req, res) => {
+    try {
+        req.user.tokens = req.user.tokens.filter((currentElement)=>{  //filtering tokens explained below.
+            return currentElement.token !== req.token;
+        })
+        await req.user.save() //Saving to database with deleted jwt token 
+        res.clearCookie('jwt') //clearning cookie from browser
+        res.render('login.hbs') //rendering login page after successfully logout
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})
+
+//tokens is an array in schema for storing jwt. And currentElements are the objects inside that array , we are filtering the array , as in token object there is _id and token so udr b hamein currentElement.token likhna hoga , condition is agar current token filter method ka user ka jo cookie token h (req.token) uske equal na hua to usko alag krte jao jo reh jaega wo user ka token hoga, or use db se remove krida jaaega
+
+By setting req.user = user, you ensure that the user data is available for future middleware and route handlers without having to re-query the database or perform additional processing.
